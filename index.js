@@ -2,11 +2,14 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 //render css files
 app.use(express.static("public"));
+
+app.listen(port, () => console.log(`Server Works !!! At port ${port}!`));
 
 //placeholders for added task
 var task = ["buy socks", "practise with nodejs"];
@@ -43,6 +46,6 @@ app.get("/", function(req, res) {
 });
 
 //set app to listen on port 3000
-app.listen(3000, function() {
-    console.log("server is running on port 3000");
-});
+//app.listen(3000, function() {
+//    console.log("server is running on port 3000");
+//});
